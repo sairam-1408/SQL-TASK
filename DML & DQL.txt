@@ -1,0 +1,38 @@
+﻿DML (Data Manipulation Language – INSERT, UPDATE, DELETE)
+1. Write a query to insert a new record into the EMPLOYEE table.
+Insert into EMPLOYEE values (101,”sai”);
+2. Write a query to insert values into only selected columns of the EMPLOYEE table.
+Insert into EMPLOYEE (id,name) values(101,’sai’);
+3. Write a query to update the salary of an employee whose emp_id = 105.
+Update EMPLOYEE set salary=4000 where emp_id=105;
+4. Write a query to update the department of all employees to HR.
+Update EMPLOYEE set department=’HR’;
+5. Write a query to delete a record from the EMPLOYEE table whose emp_id = 110.
+Delete from EMPLOYEE where emp_id=110;
+6. Write a query to delete all records from the EMPLOYEE table.
+Delete from EMPLOYEE;
+7. Write a query to increase the salary of all employees by 5,000.
+Update EMPLOYEE set salary=salary+5000;
+
+
+DQL (SELECT)
+   1. Write a query to display all records from the EMPLOYEE table.
+Select * from EMPLOYEE;
+   2. Write a query to display only emp_id and emp_name from the EMPLOYEE table.
+Select  emp_id,emp_name from EMPLOYEE;
+   3. Write a query to display emp_name and salary from the EMPLOYEE table.
+Select emp_name,salary from EMPLOYEE;
+   4. Write a query to display the department column from the EMPLOYEE table.
+Select department from EMPLOYEE;
+   5. Write a query to display all employee names.
+Select employee names from EMPLOYEE;
+   6. Write a query to display all employee salaries.
+Select employee salaries from EMPLOYEE;
+   7. Write a query to display emp_id, department, and salary from the EMPLOYEE table.
+Select emp_id,department,salary from EMPLOYEE;
+   8. Write a query to display all columns from the EMPLOYEE table.
+Select * from EMPLOYEE;
+   9. Write a query to display employee name and department only.
+Select employee_name,department from the EMPLOYEE;
+   10. Write a query to display emp_id and salary from the EMPLOYEE table.
+    Select emp_id,salary from the EMPLOYEE;
