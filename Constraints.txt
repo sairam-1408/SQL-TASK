@@ -1,0 +1,24 @@
+﻿Tasks / Requirements
+* Create a new SQL database named "customer_db" with a table named "customers" containing the following columns: customer_id, name, email, phone, and address.
+Create database customer_db;
+Create table customers(customer_id int,name varchar(50),email varchar(50),phone int,address varchar(50));
+* Apply the following constraints to the "customers" table:
+   * PRIMARY KEY constraint on the customer_id column
+   * UNIQUE constraint on the email column
+   * NOT NULL constraint on the name and phone columns
+Create table customers(customer_id int primary key,email varchar(50) unique,name varchar(50) not null,phone varchar(15) not null);
+* Insert at least 5 sample records into the "customers" table, ensuring that the constraints are enforced correctly.
+Insert into  customers values(101,”sai”,”xyz@gmail.com”,987654321,”hyd”),
+(102,”anil”,”abc@gmail.com”,990909090,”secbad”),
+(103,”ajay”,”ajay@gmail.com”,898989899,”sangeet”),
+(104,”pramod”,”haritha@gmail.com”,8978798989,”jangoan”),
+(105,”shiva”,’shiva@gmai.com’,987898789,”hitech city”);
+* Attempt to insert a duplicate email address to test the UNIQUE constraint, and observe the error message.
+Insert into customers values(106,’nanda’,’abc@gmail.com’,’9877899870’,’paradise’);
+ERROR 1062 (23000): Duplicate entry 'abc@gmail.com' for key 'customers.email' 
+* Drop the "customers" table and recreate it without the NOT NULL constraint on the phone column. Insert a new record with a NULL phone number and verify that it is allowed.
+Drop table customers;
+Create table customers(customer_id int primary key,email varchar(50) unique,name varchar(50) not null,phone varchar(15));
+Insert into customers(101,’sai’,’abc@gmail.com’,null);
+Select * from customers;
+After removing not null constraint we can insert null values.
