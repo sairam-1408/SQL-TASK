@@ -1,0 +1,82 @@
+﻿INNER JOIN
+1. Write a query to display employee name and department name.
+Select e.name,d.department_name from employee  as e inner join departments as d on e.department_id =d.department_id;
+2. Write a query to list employees working on projects.
+Select e.name, p.project_name from employee as e inner join projects as p on e.project_id=p.project_id;
+3. Write a query to find employees who are assigned to a department.
+Select e.name,d.department_name from employee as e inner join department as d on e.department_id=d.department_id;
+4. Display employee name and project name using INNER JOIN.
+Select e.name,p.project_name from employee as e inner join project as p
+On e.project_id=p.project_id;
+
+
+LEFT JOIN 
+5. Write a query to display all employees, including those without a department.
+Select * from employees as e left join department as d on e.department_id=d.department_id;
+6. Display all employees and their projects, including employees with no projects.
+Select * from employees as e left join project as p on e.project_id=p.project_id;
+7. Write a query to show employee name and department name, even if the department is NULL.
+Select e.name,d.name from employee as e left join department as d on e.department_id =d.department_id;
+
+
+RIGHT JOIN 
+8. Write a query to display all departments, even if no employees work in them.
+Select *from employees  as e right join department as d on e.department_id =d.department_id;
+9. Display all projects, including those not assigned to any employee.
+Select * from employee as e right join projects as p on e.project_id =p.project_id;
+
+FULL JOIN (Using UNION)
+10. Write a query to display all employees and all departments, including unmatched records.
+Select * from employees as e left join departments as d on e.department_id=d.department_id 
+union
+Select * from employees as e  right join departments as d on e.department_id=d.department_id;
+11. Show all employees and projects, even if no relation exists.
+  select * from employees as e left join project  as p on e.project_id=p.project_id 
+union
+Select * from employees as e  right join project as p on e.project_id=p.project_id;
+
+
+CROSS JOIN
+   12. Write a query to display all possible combinations of employees and departments.
+Select * from employees cross join departments;
+   13. Display employee names and project names using CROSS JOIN.
+Select e.name,p.project_name from employees as e cross join project as p;
+
+      14. How many rows will be returned if employee has 5 rows and department has 4 rows? (Explain using CROSS JOIN)
+Select * from employees as e cross join department as d;
+20 rows will be returned
+JOIN + CONDITIONS
+      18. Write a query to display employees working in the ‘IT’ department.
+Select e.name from employee as e inner join department as d on e.department_id =d.department_id where d.department_name=’IT’;
+      19. Display employees whose project name is ‘Banking System’
+Select e.name,p.project_name from employees as e inner join  projects as p on
+e.project_id=p.project_id where p.project_name=’Banking System’;
+
+         20. Write a query to list employees without any project.
+Select e.name,p.project_name from employees as e left join  project as p on e.project_id=p.project_id where p.project_id is null;
+________________
+
+
+         21. What happens if you join an INT column with a VARCHAR column?
+It will raise an error because you cannot combine int and varchar
+
+
+         22. Why does SQL throw an ambiguous column error in joins?
+Sql shows an ambiguous column error when two or more tables have the same column name and sql cannot determine which table column you mean
+         23. Can we join tables without primary and foreign keys? Write a query.
+Yes we can join table without primary and foreign keys as long as there is a common column that contain matching values
+
+
+
+         24. What is the difference between:
+
+            * JOIN: JOIN is a keyword used to combine rows from two or more tables based on a related column. 
+
+            * JOIN … ON:join on is used to write the conditions
+            * CROSS JOIN:cross joins means all possible outcomes as also known as cartesian product 
+               25. Write a query and explain the difference between INNER JOIN and LEFT JOIN using output.
+Select e.name,d.department_name from employee  as e inner join departments as d on e.department_id =d.department_id;
+Output:only matched values will be shown in both columns not shows null values
+Select * from employees as e left join department as d on e.department_id=d.department_id;
+Output:only left table will show all records and matching values from the right side
+*shows null values
