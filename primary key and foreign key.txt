@@ -1,0 +1,201 @@
+﻿1.
+Create a Departments table with:
+* department_id as the Primary Key
+* department_name
+Create table Departments(department_id int primary key,department_name varchar(50));
+Then create an Employees table where:
+* employee_id is the Primary Key
+* department_id references the Departments table.
+Create table Employees (employee_id int primar ykey,department_id  int,
+Foreign key(department_id) references Departments(department_id);
+________________
+
+
+2.
+A college wants to store student information and course details.
+* Create a Students table with a Primary Key.
+* Create an Enrollments table that uses a Foreign Key to refer to students.
+Create table Students(std_id int primary key, roll_no int);
+Create table Enrollments(std_id int, roll _no int,
+Foreign key(std_id) references Students(std_id));
+________________
+
+
+3.
+Design two tables:
+* Authors
+* Books
+Each book should belong to one author. Write the SQL statements.
+Create table Authors (author_id int primary key,author_name varchar(50));
+Create table books (books_id int ,books_name varchar(50),author_id int,
+Foreign key(author_id) references Authors(author_id));
+________________
+
+
+4.
+Create a Customers table and an Orders table such that each order belongs to a customer using a Foreign Key.
+Create table Customers (customer_id int primary key,customer_name varchar(50));
+Create table Orders(order_id int ,order_name varchar(50),customer_id int,
+Foreign key (customer_id) references Customers(customer_id));
+________________
+
+
+5.
+A hospital stores doctor information separately from appointments.
+Write SQL statements to:
+* Create a Doctors table.
+* Create an Appointments table where each appointment references a doctor.
+Create table Doctors(doctor_id int primary key,doctor_name varchar(50));
+Create table Appointments(patient_id int, patient_name varchar(50),doctor_id int,foreign key (doctor_id) reference Doctors (doctor_id));
+________________
+
+
+6.
+Write SQL statements to create:
+* Categories
+* Products
+Each product must belong to exactly one category using a Foreign Key.
+Create table  Categories(category_id int primary key ,category _name varchar(50));
+Create table products(product_id int primary key ,product_name varchar(50),category_id int,
+Foreign key(category_id) references Categories(category_id));
+________________
+
+
+7.
+A company has multiple projects.
+Create:
+* Projects
+* Employees
+Assume each employee is assigned to one project.
+Create table Projects(project_id int primary key, project_name varchar(50));
+Create table Employees(emp_id int,emp_name varchar(50),project_id int,foreign key (project_id) references Projects(project_id));
+
+
+________________
+
+
+8.
+Design a database for an online library:
+* Members
+* BorrowedBooks
+Each borrowed book record should refer to a member using a Foreign Key.
+Create table Members(member_id int primary key,member_name varchar(50));
+Create table BorrowedBooks(borrow_id int ,book_name varchar(50) member_id int, foreign key (member_id) references (member_id));
+________________
+
+
+9.
+Create a Schools table and a Teachers table.
+Each teacher should be associated with one school.
+Create table Schools(school_id int primary key, school_name varchar(50));
+Create table Teachers(teacher_id int primary key,teacher_name varchar(50),school_id int,
+Foreign key (school_id) references Schools(school_id));
+________________
+
+
+10.
+Write SQL statements to create:
+* Suppliers
+* Items
+Each item is supplied by one supplier.
+Create table Suppliers(supplier_id int primary key,supplier_name varchar(50));
+Create table Items(items_id int primary key,items_name varchar(50),
+Foreign key(supplier_id) references Supplier(supplier_id));
+________________
+
+
+11.
+Create a Countries table and a Cities table.
+Each city should reference its country using a Foreign Key.
+Create table Countries(country_id int primary key,country_name varchar(50));
+Create table Cities(city_id int primary key,city_name varchar(50),country_id int,foreign key (country_id) references Countries(country_id));
+________________
+
+
+12.
+A movie booking system stores theatre information separately.
+Create:
+* Theatres
+* Shows
+Each show belongs to one theatre.
+Create table Theatres(theatre_id int primary key, theatre_name varchar(50));
+Create table Shows(show_id int primary key, show_name varchar(50),theatre_id int,foreign key(theatre_id) references Theatres (theatre_id));
+________________
+
+
+13.
+Create a Publishers table and a Magazines table.
+Each magazine should reference its publisher.
+Create table Publishers(publisher_id int primary key ,publisher_name varchar(50));
+Create table Magazines(magazine_id int primary key,magazine_name varchar(50),
+
+
+________________
+
+
+14.
+A university stores department details and faculty details.
+Write SQL statements where every faculty member belongs to one department.
+Create table Departments(department_id int primary key, department_name varchar(50));
+Create table Faculty(faculty_id int primary key, faculty_name varchar(50),department_id int, foreign key(department_id) references Departments(department_id));
+________________
+
+
+15.
+Create a Brands table and a Mobiles table.
+Each mobile should be linked to a brand using a Foreign Key.
+Create table Brands(brand_id int primary key,brand_name varchar(50));
+Create table Mobiles(mobile_id int primary key,mobile_name varchar(50),brand_id int, foreign key(brand_id) references Brands(brand_id));
+________________
+
+
+16.
+A food delivery application has:
+* Restaurants
+* MenuItems
+Each menu item should belong to a restaurant.
+Create table Restaurants(restaurants_id int primary key,restaurants_name varchar(50));
+Create table MenuItems(menu_id int primary key,menu_name varchar(50),restaurants_id int,foreign key(restaurants_id) references Restaurants(restaurants_id));
+________________
+
+
+17.
+Create the following tables:
+* Courses
+* Assignments
+Each assignment belongs to one course.
+Create table Courses(course_id int primary key,course_name varchar(50));
+Create table Assignments(assignment_id int primary key,assignment_name varchar(50),course_id int,foreign key(course_id) references Courses(course_id));
+________________
+
+
+18.
+A transport company stores:
+* Drivers
+* Trips
+Each trip should reference one driver.
+Create table Drivers(driver_id int primary key,driver_name varchar(50));
+Create table Trips(trip_id int primary key ,trip_name varchar(50),driver_id int,
+Foreign key(driver_id) references Drivers(driver_id));
+________________
+
+
+19.
+Write SQL statements to create:
+* Parents
+* Children
+Each child must reference a parent using a Foreign Key.
+Create table Parents(parent_id int primary key,parent_name varchar(50));
+Create table Children(children_id int primary key,children_name varchar (50),parent_id int,foreign key(parent_id) references Parents(parent_id));
+________________
+
+
+20.
+A shopping application contains:
+* Warehouses
+* Products
+Each product is stored in one warehouse.
+Create both tables with appropriate Primary Key and Foreign Key constraints.
+These questions are suitable for practicing:
+Create table Warehouses(warehouse_id int primary key,warehouse_name varchar(50));
+Create table Products(product_id int primary key,product_name varchar(50),warehouse_id int,foreign key(warehouse_id) references Warehouses(warehouse_id));
