@@ -1,0 +1,202 @@
+﻿1. Find the average salary of employees city-wise and display only cities where average salary is less than 45,000.
+Select  city,avg(salary)as average_salary  from employees group by city having avg(salary)<45000;’
+________________
+
+
+2. Display departments where total number of employees is between 3 and 10.
+Select departments,count(*) as total_employees from employees group by departments having count(*) between 3 and 10;
+________________
+
+
+3. Find the highest salary among employees whose experience is greater than 5 years department-wise.
+Select department,max(salary) from employees where experience>5  group by department;
+________________
+
+
+4. Show total sales amount city-wise for products belonging to the Electronics category.
+Select  City,sum(total_sales) from sales where category=’Electronics’ group by city;
+________________
+
+
+5. Find the minimum salary in each city and order the result in ascending order.
+Select city,min(salary) as minimum_salary from employee group by city order by min(salary) asc;
+________________
+
+
+6. Display departments where average employee age is greater than 30.
+Select departments,avg(age)as average_age from employee  group by departments having avg(age)>30;
+________________
+
+
+7. Find the total number of employees working in departments starting with letter 'S'.
+SELECT department, COUNT(*) AS total_employees
+FROM employees
+WHERE department LIKE 'S%'
+GROUP BY department;
+
+
+
+
+________________
+
+
+8. Show cities where total salary is less than 500,000.
+Select city,sum(salary) as total_salary from employees group by city 
+Having sum(salary)<500000;
+________________
+
+
+9. Find department-wise total salary and average salary together.
+Select department,sum(salary) as total_salary,avg(salary) as average_salary from employees group by department;
+________________
+
+
+10. Display the city having the highest average salary.
+Select city,avg(salary) as average_salary from employees group by city order by avg(salary) limit 1;
+________________
+11. Find the number of employees in each department where gender is 'Female'.
+Select department,count(*) as number_of_employees from employees where gender=’Female’ group by department;
+________________
+
+
+12. Show departments where minimum salary is less than 20,000.
+Select departments,min(salary) as minimum_salary from employees Group by departments having salary <20000;
+________________
+
+
+13. Find the total salary city-wise excluding employees whose age is below 25.
+Select city,sum(salary) as total_salary from employees where age >=25 group by city;
+________________
+
+
+14. Display the average salary of employees department-wise, ordered alphabetically by department.
+Select department,avg(salary) as average_salary from  employees group by department order by department asc;
+________________
+
+
+15. Find cities having more than 4 employees and total salary greater than 300,000.
+Select cities,count(*) as total,sum(salary) as total_salary  from employees group by cities
+Having count(*)>4 and sum(salary)>300000;
+________________
+
+
+16. Show the maximum salary city-wise for employees whose experience is above 3 years.
+Select city,max(salary) as maximum_salary from employees where experience> 3 group by city;
+________________
+
+
+17. Find departments where average salary is between 40,000 and 70,000.
+Select departments,avg(salary) as average_salary from employees group by departments having avg(salary) between 40000 and 70000;
+________________
+
+
+18. Display the count of employees department-wise where city is either 'Hyderabad' or 'Bangalore'.
+Select department ,count(*) as total_employees from employees where city =’Hyderabad’ or city =’Bangalore’ group by department;
+________________
+
+
+19. Find total salary paid to male employees in each department.
+Select department,sum(salary) as total_salary from employees where gender =’male’ group by department;
+________________
+
+
+20. Show cities where employee count is less than 5.
+Select city,count(*) as total_employee from employee group by city having count(*)<5;
+________________
+
+
+21. Find the highest and lowest salary in each department.
+Select department,min(salary) as lowest_salary,max(salary) as highest_salary from employees group by department;
+________________
+
+
+22. Display departments where total salary is not less than 250,000.
+Select department,sum(salary) as total salary from employees group by department having sum(salary)>=250000;
+________________
+
+
+23. Find the average experience of employees city-wise.
+Select city,avg(experience) as experience_of_employees from employees group by city;
+________________
+
+
+24. Show total salary for each city where department is 'IT'.
+Select city,sum(salary) as total_salary from employees where department=’IT’
+Group by city;
+25. Find departments having exactly 4 employees.
+Select departments,count(*) as total_employee from employees group by departments having count(*)=4;
+________________
+
+
+26. Display cities where maximum salary is less than 90,000.
+Select city,max(salary) as maximum_salary from employees group by city having max(salary)<90000;
+________________
+
+
+27. Find the total salary and total employee count in each city.
+Select city,sum(salary) as total_salary,count(*) as total_employee from employees group by city;
+________________
+
+
+28. Show departments where average age of employees is below 35.
+Select departments,avg(age) as average_age from employees group by departments having (avg)age<35;
+________________
+
+
+29. Find city-wise employee count ordered by city name in ascending order.
+Select city,count(*) as total_employee from employees group by city order by city asc;
+________________
+
+
+30. Display departments having more than 2 female employees.
+Select departments,count(*) as female_employees from employees where gender=’Female’ group by departments having count(*)=2;
+________________
+
+
+31. Find the total salary department-wise for employees whose experience is between 2 and 6 years.
+Select department,sum(salary) as total_salary from employees where experience between 2 and 6 group by department;
+________________
+
+
+32. Show the average salary city-wise excluding salaries below 20,000.
+Select city,avg(salary) as average_salary from employees where salary>=20000 group by city;
+________________
+
+
+33. Find the department with the lowest average salary.
+Select department,avg(salary) as average_salary from employees group by department order by avg(salary) limit 1;
+________________
+
+
+34. Display cities where total employee count is greater than average employee count of all cities.
+Select city,count(*) as total_employee from employee where count(*)>(select avg(city) from employees);
+________________
+
+
+35. Find the sum of salaries department-wise and order by total salary descending.
+Select department,sum(salary) as total_salary from employees group by department order by sum(salary) desc;
+________________
+
+
+36. Show the departments where total salary is equal to or greater than 1 million.
+Select departments,sum(salary) as total_salary from employees group by departments having sum(salary)>=1000000;
+________________
+
+
+37. Find the average salary for each city where employee count is greater than 5.
+Select city,avg(salary) as average_salary,count(*) as total_employee from employees group by city having count(*)>5;
+________________
+
+
+38. Display the highest salary among female employees in each department.
+Select department,max(salary) as highest_salary from employees where gender=’female’ group by department;
+________________
+
+
+39. Find departments where the difference between maximum salary and minimum salary is greater than 50,000.
+Select departments,max(salary) as maximum_salary,min(salary) as minimum_salary from employees group by departments having max(salary)>50000- min(salary)>50000;
+________________
+
+
+40. Show city-wise total salary and filter only cities ending with 'pur'.
+Select city,sum(salary) as total_salary from employees where city like ‘%pur’  group by city ’;
