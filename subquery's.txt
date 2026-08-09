@@ -1,0 +1,62 @@
+﻿Assume the following tables:
+* students(id, name, department_id, marks)
+* employees(emp_id, emp_name, salary, department_id)
+* departments(department_id, department_name,location)
+* orders(order_id, customer_id, amount)
+* customers(customer_id, customer_name, city)
+
+Single Row Subqueries
+(Subquery returns only one value)
+Question 1
+Find students who scored more than the average marks of all students.
+Select * from students where marks>(select avg(marks) from students);
+Question 2
+Display employees whose salary is greater than the minimum salary in the company.
+Select * from employees where salary >(select min(salary) from employees);
+Question 3
+Find the student(s) who scored the highest marks in the class.
+Select * from students where marks=(select max(marks) from students);
+Multiple Row Subqueries
+(Subquery returns multiple values)
+Question 4
+Find students who belong to departments located in 'Hyderabad' (Assume departments table has location column). 
+Select * from students where department_id in (select department_id from department where location=’hyderabad’);
+
+
+
+
+Question 5
+Display employees who work in departments named 'HR' or 'Sales'.
+Select * from employees where department_id in (select department_id from departments where department_name in (‘HR’,’sales’));
+Question 6
+Find customers who placed orders with an amount greater than 10,000.
+Select * from customers where customer_id in (select customer_id from orders where amount >10000);
+Multiple Column Subqueries
+(Subquery returns more than one column)
+Question 7
+Find students who have the same department and marks as student with ID = 3.
+Select * from student where (department_id,marks) in (select department_id,marks from student where student_id=3);
+Question 8
+Display employees who have the same salary and department_id as employee with emp_id = 5.
+Select * from employees where (salary,department_id) in (select salary,department_id from employee where emp_id=5);
+Nested Subqueries
+(Subquery inside another subquery)
+Question 9
+Find employees who earn more than the average salary of the department that has the highest number of employees.
+Select * from employees where salary>(Select avg(salary) from employee where department_id=(Select department_id from employees group by department_id order by count(*) desc limit 1));
+Question 10
+Find students who scored more than the average marks of the department which has the highest average marks.
+Select * from students where marks>(select avg(marks) from students where department=(select department  from students group by department order by avg(marks)desc limit 1));
+Correlated Subqueries
+(Subquery depends on outer query)
+
+
+Question 11
+Find students who scored more than the average marks of their own department.
+Select * from student as s1 where marks>(select avg(marks) from students as s2 where s1.department_id=s2.department_id);
+Question 12
+Display employees who earn more than the average salary in their department.
+Select * from employees as e1 where salary>(select avg(salary) from employee as e2 where e1.department_id=e2.department_id);
+Question 13
+Find customers who placed more than one order.
+Select * from customers c1 (select count(*)  from orders o1 where c1.customer_id=o1.customer_id)>1;
