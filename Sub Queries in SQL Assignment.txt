@@ -1,0 +1,16 @@
+﻿Sub Queries in SQL Assignment
+Objective
+This assignment is designed to help students practice the concept of sub queries in SQL by applying it to a real-world scenario, developing their ability to write complex queries that retrieve specific data from a database.
+Background / Context
+In a company database, managers need to analyze data from various tables to make informed decisions. Sub queries are essential in such situations as they enable the retrieval of data based on conditions that are themselves dependent on the results of another query. For this assignment, assume you are tasked with optimizing data analysis for a manager who needs specific insights from the company's database.
+Tasks / Requirements
+* Design a SQL query that uses a sub query to find all employees who earn more than the average salary of their department.
+Select * from employees e1 where salary>(select avg(salary) from employees e2  where e1.department_id=e2.department_id);
+* Write a SQL query that utilizes a sub query to identify the names of products that have never been ordered.
+Select product_name  from products p1 where not exists(select 1  from orders o1 where p1.product_id=o1.product_id);
+* Create a SQL query with a sub query to determine the total sales amount for each region, where the region's sales are compared against the overall average sales across all regions.
+Select region,sum(sales) as total_sales from employee group by region having sum(sales)>(select avg(region_sales) from(select sum(sales) as region_sales from employee group by region) as temp);
+
+
+* Develop a SQL query using a sub query to list all customers who have placed orders with a total value greater than the customer with the highest total order value in the 'New York' region.
+Select customers,sum(orders) as total_values  from employee group by customers having sum(orders)>(select max(customer_total) from(select customers,sum(orders) as customer_total from employee where region=’new york’ group by customers) as temp);
