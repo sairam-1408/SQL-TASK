@@ -1,0 +1,57 @@
+﻿1. Create a view named employee_details that displays all employees.
+Create view employee_details as select * from employees;
+
+
+2. Create a view named it_employees that displays only employees working in the IT department.
+Create view it_employees as select * from employees where department=’it’;
+ 
+3. Create a view named high_salary_employees that displays employees whose salary is greater than 50000.
+Create view high_salary_employees as select * from employees where salary >50000;
+
+
+4. Create a view that displays only emp_name, department, and salary.
+Create view ab as select  emp_name,department,salary from employees;
+
+
+5. Create a view that displays employees from Hyderabad.
+Create view sai as select * from employees where city=’Hyderabad’;
+
+
+6. Display the records from the it_employees view.
+Select * from it_employees;
+
+
+7. Display only the employee name and salary from the employee_details view.
+Select emp_name,salary from employee_details;
+
+
+8. Create a view that displays employees whose salary is between 40000 and 55000.
+Create view ajay as select * from employees where salary between 40000 and 55000;
+
+
+9. Create a view named hr_employees containing employees from the HR department. Then retrieve all records from it.
+Create view hr_employees as select * from employees where department =’HR’;
+
+
+10. Create a view that displays the department and average salary for each department.
+Create view anil as select department,avg(salary) from employees group by department;
+
+
+11. Create a view that displays the department and maximum salary in each department.
+Create view mani as select department,max(salary) as maximum_salary  from employees group by department;
+12. Create a view that displays employees in descending order of salary. Then retrieve the data from the view.
+Create view sandy as select* from employees order by salary desc;
+Select * from sandy;
+13. Create a view that contains employees whose names start with the letter A.
+Create view shiva as select * from employees where emp_name like “A%”;
+
+
+14. Create a view that contains employees from either Chennai or Hyderabad.
+Create view anil as select * from employee where city=’Chennai’ or  city=’Hyderabad’;
+
+
+15. Create a view named employee_salary with emp_id, emp_name, and salary. Then increase the salary of employee 101 through the view and check whether the base table is affected.
+Create view employee_salary as select emp_id,emp_name,salary from employees;
+Update employee_salary set salary=salary+10000 where emp_id=101;
+select*from employee_salary;
+Select * from employees where emp_id=101;
