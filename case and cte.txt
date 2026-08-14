@@ -1,0 +1,109 @@
+﻿Q1. Employee Salary Category
+Consider the table:
+employees(emp_id, emp_name, department, salary)
+Write a query to display:
+* Employee name
+* Department
+* Salary
+* A new column salary_category
+Rules:
+* Salary >= 80000 → High
+* Salary >= 50000 → Medium
+* Salary < 50000 → Low
+Select emp_name,department,salary 
+Case
+When salary>=80000 then ‘high’
+When salary>=50000 then ‘medium’
+Else ‘low’
+End as salary_category
+From employees;
+________________
+
+
+Q2. Student Performance
+Consider:
+students(student_id, student_name, marks)
+Write a query to display:
+* Student name
+* Marks
+* A new column result
+Rules:
+* Marks >= 90 → Excellent
+* Marks >= 75 → Very Good
+* Marks >= 60 → Good
+* Marks >= 40 → Pass
+* Marks < 40 → Fail
+Select student_name,marks,
+Case
+When marks>=90 then ‘excellent’
+When marks>=75 then ‘very good’
+When marks>=60 then ‘good’
+When marks>=40 then ‘pass’
+Else ‘fail’
+End as result
+From students;
+________________
+
+
+
+
+Q3. Department Average Salary
+Consider:
+employees(emp_id, emp_name, department, salary)
+Using a CTE, calculate the average salary of each department.
+Display:
+* Department
+* Average salary
+Then display only those departments whose average salary is greater than 60000.
+With ab as 
+(select department,avg(salary)  from employees group by department);
+Select * from ab where avg(salary)>60000;
+
+
+________________
+
+
+Q4. Find High-Spending Customers
+Consider:
+orders(order_id, customer_id, order_date, amount)
+Using a CTE:
+1. Calculate the total amount spent by each customer.
+2. Display customers whose total spending is greater than 100000.
+Output:
+* Customer ID
+* Total spending
+With ba as
+(select customer_id,sum(amount)  total_spending from orders group by customer_id )
+Select * from ba where total_spending >100000;
+________________
+
+
+Q5. Employee Performance Analysis
+Consider:
+employees(emp_id, emp_name, department, salary, performance_score)
+Using a CTE:
+1. Calculate the average performance_score for each department.
+2. Compare each employee's performance score with their department's average.
+3. Display:
+   * Employee name
+   * Department
+   * Performance score
+   * Department average
+   * Performance status
+Rules for performance_status:
+* Employee score > department average → Above Average
+* Employee score = department average → Average
+* Employee score < department average → Below Average
+WITH anil AS (
+    SELECT department,
+           AVG(performance_score) AS dept_avg
+    FROM employees
+    GROUP BY department
+)
+SELECT e.emp_name,
+       e.department,
+       e.performance_score,
+       a.dept_avg
+FROM employees e
+JOIN anil a
+ON e.department = a.department;
