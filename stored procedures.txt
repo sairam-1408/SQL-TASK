@@ -1,0 +1,83 @@
+﻿Create a stored procedure to display all records from a table called Employees.
+Create procedure details()
+Begin 
+Select * from employees
+End \\
+Call details()\\
+
+Write a stored procedure that accepts an EmployeeID and returns the employee details.
+Create procedure details1(in,roll,int)
+Begin
+Select * from employees where employee_id=roll
+End \\
+Call details1(7) \\
+
+Create a stored procedure that inserts a new employee into the Employees table with parameters:
+
+* Name
+
+* Department
+
+* Salary
+Create procedure ab(in emp_name varchar(50),in emp_dept varchar(50),in emp_salary int)
+Begin
+Insert into employees(name,department,salary)
+values(emp_name,emp_dept,emp_salary)
+End \\
+Call ab(“sai”,”hr”,200000) \\
+
+
+
+Write a stored procedure to update the salary of an employee using EmployeeID.
+Create procedure ba(in emp_id int)
+Begin 
+Update employees set salary=salary+5000 where id=emp_id
+End \\
+Call ba(8) \\
+
+
+Create a stored procedure to delete an employee record using EmployeeID.
+Create procedure delete(in roll int)
+Begin 
+Delete from employee  where emp_id = roll;
+End \\
+Call delete(4)\\
+
+
+Write a stored procedure that takes Salary as input and displays employees whose salary is greater than that value.
+Create procedure ab(in  sal int)
+Begin
+Select * from employees where salary >sal;
+End \\
+ Call ab(20000)\\
+
+
+Write a stored procedure to calculate the average salary of employees.
+Create procedure ab2()
+Begin
+Select avg(salary)as average_salary from employees;
+End \\
+Call ab2() \\
+
+Create a stored procedure that returns the total number of employees in a department.
+Create procedure count(in dept varchar(50))
+Begin
+Select count(department) as total_number_of_employees from employees where department=dept;
+End \\
+Call count() \\
+
+
+Write a stored procedure to find the maximum salary in the Employees table.
+Create procedure max()
+Begin
+Select max(salary) as max_salary from employees;
+End  \\
+Call max() \\
+
+
+Create a stored procedure that gives a bonus (10%) to employees whose salary is below 50,000.
+Create procedure bonus()
+Begin
+Update employees set salary=salary+(salary*10/100 )where salary<50000;
+End \\
+Call bonus() \\
